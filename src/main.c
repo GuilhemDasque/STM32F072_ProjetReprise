@@ -10,6 +10,7 @@
 #include "bsp.h"
 #include "delay.h"
 #include "stdarg.h"
+#include "gpio_control.h"
 
 
 
@@ -31,7 +32,10 @@ int main(void)
 	SystemClock_Config();
 
 	// Initialize LED and USER Button
-	BSP_LED_Init();
+	char choix = 'A';
+	gpio_channel_enable(choix);
+	gpioA5_configuration(1,0,2,0);
+	gpioA6_configuration(1,0,2,0);
 	BSP_PB_Init();
 
 	// Initialize Debug Console

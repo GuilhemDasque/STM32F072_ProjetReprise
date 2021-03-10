@@ -1,7 +1,7 @@
 /*
  * bsp.c
  *
- *  Created on: 5 août 2017
+ *  Created on: 5 aoï¿½t 2017
  *      Author: Laurent
  */
 
@@ -64,6 +64,7 @@ void BSP_LED_Off()
 void BSP_LED_Toggle()
 {
 	GPIOA->ODR ^= GPIO_ODR_5;
+	GPIOA->ODR ^= GPIO_ODR_6;
 }
 
 /*
