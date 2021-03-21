@@ -14,6 +14,8 @@ Purpose : Develop functions which can control DAC
 
 /* 
     This Function is here to initialise the DAC depending on the following parameters
+    DAC1 : PA4
+    DAC2 : PA5
 
 */
 void DAC_Configuration(uint8_t channel_number){

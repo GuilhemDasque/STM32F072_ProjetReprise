@@ -11,6 +11,8 @@
 #include "delay.h"
 #include "stdarg.h"
 #include "gpio_control.h"
+#include "LED_Mode.h"
+#include "dac.h"
 
 
 
@@ -42,14 +44,17 @@ int main(void)
 	BSP_Console_Init();
 	my_printf("\r\nConsole Ready!\r\n");
 	my_printf("SYSCLK = %d Hz\r\n", SystemCoreClock);
-
 	// Loop forever
 	while(1)
 	{
 		// LED test
-		BSP_LED_Toggle();
-		delay_ms(200);
-
+		//BSP_LED_Toggle();
+		//delay_ms(200);
+		DAC_Configuration(1);
+		LED_On(6);		
+		delay_ms(400);	
+		LED_Off(6);
+		delay_ms(400);
 		// USER Button & Console test
 		if(BSP_PB_GetState() == 1)
 		{
