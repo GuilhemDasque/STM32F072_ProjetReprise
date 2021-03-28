@@ -10,4 +10,6 @@ Purpose : Develop functions which can control DAC
 
 #include <stm32f0xx.h>
 
+
 void DAC_Configuration(uint8_t channel_number);
+void TIMER_DAC_Configuration(void);

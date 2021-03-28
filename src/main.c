@@ -44,22 +44,22 @@ int main(void)
 	BSP_Console_Init();
 	my_printf("\r\nConsole Ready!\r\n");
 	my_printf("SYSCLK = %d Hz\r\n", SystemCoreClock);
+	DAC_Configuration(1);
+	TIMER_DAC_Configuration();
 	// Loop forever
+	uint16_t angle = 0.0f;
+
 	while(1)
 	{
-		// LED test
-		//BSP_LED_Toggle();
-		//delay_ms(200);
-		DAC_Configuration(1);
+		angle = angle + 1;
 		LED_On(6);		
 		delay_ms(400);	
 		LED_Off(6);
 		delay_ms(400);
-		// USER Button & Console test
-		if(BSP_PB_GetState() == 1)
-		{
-			my_printf("#");
-		}
+		DAC->DHR12R1 = 2*angle/(0xFFF+1); /* (3) */
+		//DAC->DHR12R2 = DAC_OUT2_VALUE; /* (4) */
+		if(angle == 255) angle =0;
+
 	}
 }
 
